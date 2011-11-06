@@ -1,4 +1,4 @@
-from jabberbot import JabberBot, botcmd
+from lib.jabberbot import JabberBot, botcmd
 import traceback
 import os, sys, zipfile, getopt, traceback, socket
 import logging

@@ -4,11 +4,7 @@ XMPP bot to do simple tasks and automate analysis
 
 Structure
 =========
-* plugins/
-** plugin_name/
-*** plugin.py
-*** libs
-* shinwa.py
+Plugins should contain no logic within the main XMPP bot file. Each plugin will be independent and contain all files needed to run.
 
 Plugins
 =======

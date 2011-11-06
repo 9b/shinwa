@@ -1,6 +1,5 @@
 from jabberbot import JabberBot, botcmd
 import traceback
-import simplejson as json
 import os, sys, zipfile, getopt, traceback, socket
 import logging
 
@@ -28,7 +27,7 @@ class ShinwaBot(JabberBot):
         """Scan text for matching IP addresses from the MDL"""
 
         try:
-            from plugins.mdl_scanner import mdl_scanner
+            from plugins.mdl_scanner.plugin import mdl_scanner
         except:
             return "Module failed to load"
         
@@ -40,11 +39,23 @@ class ShinwaBot(JabberBot):
         """Translate text using Google Translate"""
 
         try:
-            from plugins.translang import translang
+            from plugins.translang.plugin import translang
         except:
             return "Module failed to load"
         
         obj = translang(mess,self)
+        return obj.get_results()
+    
+    @botcmd
+    def pdfxray(self, mess, args):
+        """Generates a generic PDF X-RAY report"""
+
+        try:
+            from plugins.pdfxray.plugin import pdfxray
+        except:
+            return "Module failed to load"
+        
+        obj = pdfxray(mess,self)
         return obj.get_results()
 
 username = 'shinwa@goldfoil'
